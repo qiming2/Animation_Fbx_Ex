@@ -34,8 +34,20 @@ command_list = {
 	},
 	
 	{
+		.name = "clean",
+		.out = "*cleanup*",
+		.footer_panel = true,
+		.save_dirty_files = true,
+		.cursor_at_end = false,
+		.cmd = {
+			{ "clean.bat", .os = "win" },
+		},
+	},
+	
+
+	{
 		.name = "run",
-		.out = "*compilation*",
+		.out = "*run*",
 		.footer_panel = true,
 		.save_dirty_files = true,
 		.cursor_at_end = false,
@@ -58,5 +70,6 @@ command_list = {
 
 
 fkey_command[5] = "build";
+fkey_command[4] = "clean";
 fkey_command[3] = "run";
 fkey_command[9] = "visual_studio_debug";
