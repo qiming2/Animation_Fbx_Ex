@@ -1,2 +1,7 @@
 @echo off
-build\opengl_animation.exe
+
+mkdir build
+pushd build
+opengl_animation.exe
+
+popd

@@ -29,6 +29,12 @@ using namespace glm;
 // TAGS: IMPORTANT, NOTE, URGENT, TECH, REFERENCE
 // @Important 
 
+/*
+A sandbox project created from scratch to experiment
+blender, 4coder, MSVC command line tools as well as the meat of this project
+skeletal animation!
+*/
+
 // Util Func Declar
 std::vector<std::string> split(std::string s, const std::string& delim);
 std::string readAll(const char* filePath);
@@ -80,7 +86,7 @@ int main(void) {
     
     // Compile Shader
     
-    u32 program = compile_shader("res/basic.shader");
+    u32 program = compile_shader("../res/basic.shader");
     
     glEnable(GL_DEPTH_TEST);
     
@@ -110,7 +116,7 @@ int main(void) {
         
         glViewport(0, 0, 1920, 1080);
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-        glClearColor(0.0f, 1.0f, 1.0f, 1.0f);
+        glClearColor(0.8f, 0.7f, 0.8f, 1.0f);
         renderSphere();
         ImGui::ShowDemoWindow(&show_demo_window);
         
@@ -165,12 +171,9 @@ i32 compile_shader(const string& file) {
     
     u32 vert = compile_individual_shader(contents[0].c_str(), GL_VERTEX_SHADER);
     u32 frag = compile_individual_shader(contents[1].c_str(), GL_FRAGMENT_SHADER);
-    
     u32 program = glCreateProgram();
-    
     glAttachShader(program, vert);
     glAttachShader(program, frag);
-    
     glLinkProgram(program);
     glValidateProgram(program);
     
@@ -190,7 +193,7 @@ i32 compile_shader(const string& file) {
     return program;
 }
 
-// renders (and builds at first invocation) a sphere
+// renders a sphere
 // -------------------------------------------------
 unsigned int sphereVAO = 0;
 unsigned int indexCount;
